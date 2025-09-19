@@ -1,8 +1,7 @@
 {
   "build": {
-    "builder": "java",
-    "buildCommand": "./mvnw clean package",
-    "startCommand": "java -jar target/ToDoApp-0.0.1-SNAPSHOT.jar"
+    "builder": "docker",
+    "dockerfilePath": "Dockerfile"
   },
   "plugins": [
     {
