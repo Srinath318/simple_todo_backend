@@ -1,0 +1,19 @@
+{
+  "build": {
+    "builder": "java",
+    "buildCommand": "./mvnw clean package",
+    "startCommand": "java -jar target/ToDoApp-0.0.1-SNAPSHOT.jar"
+  },
+  "plugins": [
+    {
+      "name": "mysql",
+      "inputs": {}
+    }
+  ],
+  "env": {
+    "PORT": "@PORT",
+    "JDBC_DATABASE_URL": "@MYSQL_URL",
+    "JDBC_DATABASE_USERNAME": "@MYSQL_USER",
+    "JDBC_DATABASE_PASSWORD": "@MYSQL_PASSWORD"
+  }
+}
