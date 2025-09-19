@@ -1,17 +1,8 @@
 {
   "build": {
-    "builder": "docker"
+    "builder": "dockerfile"
   },
-  "plugins": [
-    {
-      "name": "mysql",
-      "inputs": {}
-    }
-  ],
-  "env": {
-    "PORT": "@PORT",
-    "JDBC_DATABASE_URL": "@MYSQL_URL",
-    "JDBC_DATABASE_USERNAME": "@MYSQL_USER",
-    "JDBC_DATABASE_PASSWORD": "@MYSQL_PASSWORD"
+  "deploy": {
+    "startCommand": "java -jar app.jar"
   }
 }

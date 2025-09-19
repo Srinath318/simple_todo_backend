@@ -1,25 +1,13 @@
-# Use official Java image
-FROM eclipse-temurin:21-jdk-alpine
-
-# Set working directory
+# Use an official Maven image to build the app
+FROM maven:3.9.2-eclipse-temurin-21 AS build
 WORKDIR /app
-
-# Copy Maven wrapper and pom
-COPY mvnw .
-COPY .mvn .mvn
 COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy source code
-COPY src src
-
-# Give execute permission to Maven wrapper
-RUN chmod +x mvnw
-
-# Build the app
-RUN ./mvnw clean package -DskipTests
-
-# Expose port
+# Use an OpenJDK image to run the app
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=build /app/target/ToDoApp-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
-
-# Run the app
-CMD ["java", "-jar", "target/ToDoApp-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
