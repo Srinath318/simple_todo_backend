@@ -13,7 +13,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://chic-crepe-c042c5.netlify.app")
+                        .allowedOrigins("https://simple-todo-project.netlify.app/")
                         .allowedMethods("*");
             }
         };
